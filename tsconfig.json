@@ -1,5 +1,7 @@
 {
   "extends": "expo/tsconfig.base",
+  "types": ["styled-components-react-native"],
+
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
