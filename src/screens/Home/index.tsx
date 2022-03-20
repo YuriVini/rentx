@@ -3,6 +3,7 @@ import { StatusBar } from "react-native";
 import { RFValue } from "react-native-responsive-fontsize";
 
 import Logo from "../../assets/logo.svg";
+import { Car } from "../../components/Car";
 
 import { Container, Header, HeaderContent, TotalCars } from "./styles";
 
