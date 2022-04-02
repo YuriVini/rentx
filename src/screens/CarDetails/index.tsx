@@ -24,7 +24,9 @@ import {
   Price,
   Accessories,
   About,
+  Footer,
 } from "./styles";
+import { Button } from "../../components/Button";
 
 export function CarDetails() {
   return (
@@ -56,7 +58,7 @@ export function CarDetails() {
 
         <Accessories>
           <Accessory name="380Km/h" icon={speedSvg} />
-          <Accessory name="3.2s" icon={gasolineSvg} />
+          <Accessory name="3.2s" icon={accelerationSvg} />
           <Accessory name="800 HP" icon={forceSvg} />
           <Accessory name="Gasolina" icon={gasolineSvg} />
           <Accessory name="Auto" icon={exchangeSvg} />
@@ -69,6 +71,10 @@ export function CarDetails() {
           para quem gosta de acelar.
         </About>
       </Content>
+
+      <Footer>
+        <Button title="Confirmar" />
+      </Footer>
     </Container>
   );
 }
