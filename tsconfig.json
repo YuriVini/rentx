@@ -3,6 +3,7 @@
   "types": ["styled-components-react-native"],
 
   "compilerOptions": {
+    "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
     "lib": ["DOM", "ESNext"],
@@ -11,6 +12,9 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "strict": true,
-    "allowJs": true
+    "allowJs": true,
+    "paths": {
+      "react-native-calendars": ["node_modules/@types/react-native-calendars"]
+    }
   }
 }
