@@ -62,7 +62,7 @@ export function CarDetails() {
           <Accessory name="800 HP" icon={forceSvg} />
           <Accessory name="Gasolina" icon={gasolineSvg} />
           <Accessory name="Auto" icon={exchangeSvg} />
-          <Accessory name="2 peossoal" icon={peopleSvg} />
+          <Accessory name="2 pessoas" icon={peopleSvg} />
         </Accessories>
 
         <About>
