@@ -5,7 +5,7 @@ export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.header};
 
-  padding-top: 96px;
+  padding-top: 56px;
 `;
 
 export const Content = styled.View`
@@ -38,5 +38,5 @@ export const Footer = styled.View`
   width: 100%;
   align-items: center;
 
-  margin: 80px 0;
+  margin-bottom: 30px;
 `;
