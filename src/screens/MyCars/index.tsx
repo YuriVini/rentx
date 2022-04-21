@@ -27,7 +27,7 @@ import {
 } from "@react-navigation/native";
 import { useTheme } from "styled-components";
 import { Car } from "components/Car";
-import { Load } from "components/Load";
+import { LoadAnimation } from "components/LoadAnimation";
 
 interface CarProps {
   id: string;
@@ -57,7 +57,9 @@ export function MyCars() {
       } catch (error) {
         Alert.alert("Ops, Deu problema aqui");
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
       }
     }
 
@@ -82,7 +84,7 @@ export function MyCars() {
       </Header>
 
       {loading ? (
-        <Load />
+        <LoadAnimation />
       ) : (
         <Content>
           <Appointment>
