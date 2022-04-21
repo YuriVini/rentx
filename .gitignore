@@ -55,4 +55,4 @@ web-build/
 dist/
 
 # Server
-services/server.json
+server.json
