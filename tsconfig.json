@@ -1,9 +1,8 @@
 {
-  "extends": "expo/tsconfig.base",
+  "extends": "@tsconfig/recommended/tsconfig.json",
   "types": ["styled-components-react-native"],
 
   "compilerOptions": {
-    "baseUrl": "./",
     "allowSyntheticDefaultImports": true,
     "jsx": "react-native",
     "lib": ["DOM", "ESNext"],
@@ -13,7 +12,10 @@
     "resolveJsonModule": true,
     "strict": true,
     "allowJs": true,
+    "rootDirs": ["./"],
+    "baseUrl": "./src",
     "paths": {
+      "@src/*": ["src/*"],
       "react-native-calendars": ["node_modules/@types/react-native-calendars"]
     }
   }

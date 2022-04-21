@@ -12,9 +12,9 @@ import {
   Archivo_500Medium,
   Archivo_600SemiBold,
 } from "@expo-google-fonts/archivo";
-import { Routes } from "./src/routes";
+import { Routes } from "routes";
 
-import theme from "./src/styles/theme";
+import theme from "styles/theme";
 
 export default function App() {
   const [fontsLoaded] = useFonts({
