@@ -23,12 +23,7 @@ export function ImageSlider({ imagesUrl }: Props) {
       </ImageIndexes>
 
       <CarImageWrapper>
-        <CarImage
-          source={{
-            uri: "https://freepngimg.com/thumb/audi/35227-5-audi-rs5-red.png",
-          }}
-          resizeMode="contain"
-        />
+        <CarImage source={imagesUrl} resizeMode="contain" />
       </CarImageWrapper>
     </Container>
   );
