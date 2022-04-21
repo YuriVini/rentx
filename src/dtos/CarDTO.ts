@@ -2,7 +2,7 @@ export interface CarDTO {
   id: string;
   brand: string;
   name: string;
-  aboud: string;
+  about: string;
   rent: {
     period: string;
     price: number;
@@ -13,5 +13,5 @@ export interface CarDTO {
     type: string;
     name: string;
   }[];
-  photo: string[];
+  photos: string[];
 }
