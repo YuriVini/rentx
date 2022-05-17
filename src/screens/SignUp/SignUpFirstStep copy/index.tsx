@@ -24,7 +24,7 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-export function SignUpSecondStep() {
+export function SignUpFirstStep() {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
   function handleBack() {
