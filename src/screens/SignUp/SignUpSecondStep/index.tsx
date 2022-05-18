@@ -24,16 +24,14 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
-export function SignUpFirstStep() {
+export function SignUpSecondStep() {
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
 
   function handleBack() {
     navigation.goBack();
   }
 
-  function handleNext() {
-    navigation.navigate("SignUpSecondStep");
-  }
+  function handleNext() {}
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
