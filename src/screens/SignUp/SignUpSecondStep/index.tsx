@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
+  useRoute,
 } from "@react-navigation/native";
 
 import {
@@ -16,22 +17,60 @@ import {
 } from "./styles";
 import { BackButton } from "components/BackButton";
 import { Bullet } from "components/Bullet";
-import { Input } from "components/Input";
 import { Button } from "components/Button";
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
 } from "react-native";
+import { PasswordInput } from "components/PasswordInput";
+import { useTheme } from "styled-components/native";
+import { api } from "services/api";
+
+interface Params {
+  user: { name: string; email: string; driverLicense: string };
+}
 
 export function SignUpSecondStep() {
+  const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
+  const route = useRoute();
+  const theme = useTheme();
+
+  const { user } = route.params as Params;
 
   function handleBack() {
     navigation.goBack();
   }
 
-  function handleNext() {}
+  async function handleRegister() {
+    if (!password || !passwordConfirm) {
+      return Alert.alert("Informe a senha e a confirmação");
+    }
+    if (password !== passwordConfirm) {
+      return Alert.alert("As senhas não são iguais");
+    }
+
+    await api
+      .post("/users", {
+        name: user.name,
+        email: user.email,
+        driver_license: user.driverLicense,
+        password,
+      })
+      .then(() => {
+        navigation.navigate("Confirmation", {
+          title: "Conta criada",
+          message: `Agora é só fazer login\ne aproveitar`,
+          nextScreenRoute: "SignIn",
+        });
+      })
+      .catch(() => {
+        Alert.alert("Opa", "Não foi possível cadastrar");
+      });
+  }
 
   return (
     <KeyboardAvoidingView behavior="position" enabled>
@@ -40,8 +79,8 @@ export function SignUpSecondStep() {
           <Header>
             <BackButton onPress={handleBack} />
             <Steps>
-              <Bullet active />
               <Bullet />
+              <Bullet active />
             </Steps>
           </Header>
 
@@ -49,21 +88,26 @@ export function SignUpSecondStep() {
           <SubTitle>Faça seu cadastro de{"\n"}forma rápida e fácil</SubTitle>
 
           <Form>
-            <FormTitle>1. Dados</FormTitle>
-            <Input iconName="user" placeholder="Nome" />
-            <Input
-              iconName="mail"
-              placeholder="E-mail"
-              keyboardType="email-address"
+            <FormTitle>2. Senha</FormTitle>
+            <PasswordInput
+              iconName="lock"
+              placeholder="Senha"
+              onChangeText={setPassword}
+              value={password}
             />
-            <Input
-              iconName="credit-card"
-              placeholder="CNH"
-              keyboardType="numeric"
+            <PasswordInput
+              iconName="lock"
+              placeholder="Repetir Senha"
+              onChangeText={setPasswordConfirm}
+              value={passwordConfirm}
             />
           </Form>
 
-          <Button title="Próximo" onPress={handleNext} />
+          <Button
+            title="Cadastrar"
+            color={theme.colors.success}
+            onPress={handleRegister}
+          />
         </Container>
       </TouchableWithoutFeedback>
     </KeyboardAvoidingView>
