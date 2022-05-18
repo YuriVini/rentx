@@ -18,6 +18,7 @@ import {
   ParamListBase,
   useNavigation,
 } from "@react-navigation/native";
+import { useAuth } from "hooks/auth";
 
 export function SignIn() {
   const [email, setEmail] = useState("");
@@ -25,6 +26,7 @@ export function SignIn() {
 
   const navigation = useNavigation<NavigationProp<ParamListBase>>();
   const theme = useTheme();
+  const { signIn } = useAuth();
 
   async function handleSignIn() {
     try {
@@ -36,6 +38,7 @@ export function SignIn() {
       });
 
       await schema.validate({ email, password });
+      signIn({ email, password });
     } catch (error) {
       if (error instanceof Yup.ValidationError) {
         return Alert.alert("Opa", error.message);
@@ -94,7 +97,7 @@ export function SignIn() {
             <Button
               title="Login"
               onPress={handleSignIn}
-              enabled={false}
+              enabled={true}
               loading={false}
             />
             <Button
