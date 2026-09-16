@@ -19,6 +19,7 @@ module.exports = function (api) {
           root: ["./src"],
         },
       ],
+      ["@babel/plugin-proposal-decorators", { "legacy": true }],
       ["react-native-reanimated/plugin"],
     ],
   };
